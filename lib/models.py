@@ -8,6 +8,8 @@ Base = declarative_base()
 class Dog(Base):
     __tablename__ = 'dogs'
 
+    __table_args__ = (PrimaryKeyConstaint('id',))
+
     id = Column(Integer(), primary_key=True)
     name = Column(String())
     breed = Column(String())
