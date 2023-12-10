@@ -4,7 +4,7 @@ from sqlalchemy import create_engine
 engine = create_engine('sqlite:///:memory')
 
 def create_table(base,engine):
-    base.metedata.create_all(engine)
+    base.metadata.create_all(engine)
     return engine
 def save(session, dog):
     session.add(dog)
@@ -13,16 +13,16 @@ def save(session, dog):
 
 def get_all(session):
     
-    return session.guery(dog).all()
+    return session.query(Dog).all()
 
 def find_by_name(session, name):
-    return session.query(dog).filter(dog.name == name).first()
+    return session.query(Dog).filter(Dog.name == name).first()
     
 def find_by_id(session, id):
-    return session.query(dog).filter_by(id=id).first()
+    return session.query(Dog).filter_by(id=id).first()
 
 def find_by_name_and_breed(session, name, breed):
-    return session.query(dog).filter(dog.name == name and dog.breed == breed).first()
+    return session.query(Dog).filter(Dog.name == name and Dog.breed == breed).first()
 
 def update_breed(session, dog, breed):
     dog.breed = breed
